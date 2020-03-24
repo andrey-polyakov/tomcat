@@ -1,11 +1,10 @@
 package com.codeminders.homework;
 
-import com.codeminders.homework.parser.JavaNoRegexCommentsRemover;
+import com.codeminders.homework.parser.JavaCommentsRemover;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class JavaNoRegexCommentsRemoverTests
-{
+public class JavaNoRegexCommentsRemoverTests {
 
     public static final String X_FIRE_X_FLOOD_X_PLAGUE = "String x=\"XXX\\\"//Amsterdam\";";
     /**
@@ -96,7 +95,7 @@ public class JavaNoRegexCommentsRemoverTests
 
     @Test
     public void doubleQuoteInBlockComment() {
-        run("/*" + RUSSIAN_COMMENT +"\"*/\ndouble pi=3.14;//remove this", "\ndouble pi=3.14;", "");
+        run("/*" + RUSSIAN_COMMENT + "\"*/\ndouble pi=3.14;//remove this", "\ndouble pi=3.14;", "");
     }
 
     @Test
@@ -107,13 +106,13 @@ public class JavaNoRegexCommentsRemoverTests
 
     /**
      * Invoke unit under test
+     *
      * @param testInput
      * @param expected
      * @param message
      */
-    public void run(String testInput, String expected, String message)
-    {
-        String actual = JavaNoRegexCommentsRemover.RemoveComments(testInput);
+    public void run(String testInput, String expected, String message) {
+        String actual = JavaCommentsRemover.removeComments(testInput);
         Assert.assertEquals(message, expected, actual);
     }
 }
